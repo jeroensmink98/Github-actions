@@ -2,7 +2,7 @@ name: create-testenv-aws-infra
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
 
 jobs:
   create-comment:
@@ -14,8 +14,8 @@ jobs:
       - name: Add SHORT_SHA env property with commit short sha
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
 
-      - name: Add SHORT_SHA env property with commit short sha
-        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c32-8`" >> $GITHUB_ENV
+      - name: Echo commit-hash
+        run: echo ${{ $GITHUB_ENV}}
 
 
 
